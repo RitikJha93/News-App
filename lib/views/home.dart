@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:news_app/helpers/data.dart';
+import 'package:news_app/models/category_model.dart';
+import 'package:news_app/widgets/categoryTile.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,6 +13,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  List<CategoryModel> categories = <CategoryModel>[];
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    categories = getCategories();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +39,25 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
+      body: Container(
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 12),
+              height: 70,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    return CategoryTile(
+                        imageUrl: categories[index].imageUrl!,
+                        categoryName: categories[index].categoryName!);
+                  }),
+            )
+          ],
+        ),
+      ),
     );
   }
 }
-
-
