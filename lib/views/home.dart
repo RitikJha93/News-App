@@ -83,9 +83,11 @@ class _HomeState extends State<Home> {
                           itemCount: news.length,
                           itemBuilder: (context, index) {
                             return BlogTile(
-                                imageUrl: news[index].urlToImage!,
-                                title: news[index].title!,
-                                description: news[index].description!);
+                              imageUrl: news[index].urlToImage!,
+                              title: news[index].title!,
+                              description: news[index].description!,
+                              url: news[index].url!,
+                            );
                           }),
                     )
                   ],
