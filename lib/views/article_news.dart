@@ -26,10 +26,10 @@ class _ArticleNewsState extends State<ArticleNews> {
               'News',
               style: TextStyle(color: Colors.blue[300]),
             ),
-            Opacity(
+            const Opacity(
                 opacity: 0,
                 child: Padding(
-                  padding: const EdgeInsets.all(16),
+                  padding: EdgeInsets.all(16),
                   child: Icon(Icons.search),
                 ))
           ],
